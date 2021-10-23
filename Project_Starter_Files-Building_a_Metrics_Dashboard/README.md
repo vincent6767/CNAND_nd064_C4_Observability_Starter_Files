@@ -25,7 +25,13 @@
     * The team set *service request response time* as 500ms as a SLO. The SLI is the actual response time for each specific requests.
 
 ## Creating SLI metrics.
-*TODO:* It is important to know why we want to measure certain metrics for our customer. Describe in detail 5 metrics to measure these SLIs. 
+*TODO:* It is important to know why we want to measure certain metrics for our customer. Describe in detail 5 metrics to measure these SLIs.
+
+   * There are many metrics that could be used to measure SLIs. But most of them could be categorized into 4 metrics, called golden signals. Those are:
+        * **Latency**: The time taken to serve a request (usually measured in ms).
+        * **Traffic**: The amount of stress on a system from demand (such as the number of HTTP requests/second)
+        * **Saturation**: The overall capacity of a service (such as the percentage of memory or CPU used)
+        * **Errors**: The number of requests that are failing (such as number of HTTP 500 responses).
 
 ## Create a Dashboard to measure our SLIs
 *TODO:* Create a dashboard to measure the uptime of the frontend and backend services We will also want to measure to measure 40x and 50x errors. Create a dashboard that show these values over a 24 hour period and take a screenshot.
