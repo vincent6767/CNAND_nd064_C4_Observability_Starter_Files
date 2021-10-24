@@ -49,17 +49,18 @@
 
 TROUBLE TICKET
 
-Name:
+Name: 500 Internal server error on /star endpoint
 
-Date:
+Date: October 24th, 2021
 
-Subject:
+Subject: "Add star" functionality returns 500 internal server error
 
-Affected Area:
+Affected Area: Add star functionality (backend)
 
-Severity:
+Severity: Critical, functionality can't be accessed
 
-Description:
+Description: Users are blocked completely to add star features due error. Here is the trace ID for further information including the error log: **595b76dd18bf0b74**
+
 
 
 ## Creating SLIs and SLOs
