@@ -28,7 +28,7 @@ FlaskInstrumentor().instrument_app(app)
 RequestsInstrumentor().instrument()
 
 def init_tracer(service):
-    logging.getLogger('').jandlers = []
+    logging.getLogger('').handlers = []
     logging.basicConfig(format='%(message)s', level=logging.DEBUG)
 
     config = Config(
