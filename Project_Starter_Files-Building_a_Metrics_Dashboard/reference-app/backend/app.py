@@ -4,6 +4,9 @@ import pymongo
 import logging
 from flask_pymongo import PyMongo
 
+# Prometheus dependencies
+from prometheus_flask_exporter.multiprocess import GunicornInternalPrometheusMetrics
+
 # Jaeger dependencies
 from jaeger_client import Config
 from opentelemetry import trace
@@ -24,6 +27,8 @@ trace.get_tracer_provider().add_span_processor(
 )
 
 app = Flask(__name__)
+metrics = GunicornInternalPrometheusMetrics(app)
+
 FlaskInstrumentor().instrument_app(app)
 RequestsInstrumentor().instrument()
 

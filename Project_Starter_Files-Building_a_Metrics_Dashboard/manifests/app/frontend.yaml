@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: ghcr.io/thejaysmith/myfrontend:v1
+        image: vincentbiasa6767/frontend:master
         ports:
         - containerPort: 8080
 ---
