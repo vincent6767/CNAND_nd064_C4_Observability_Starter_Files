@@ -1,3 +1,5 @@
+import logging
+
 from flask import Flask, render_template, request, jsonify
 
 from prometheus_flask_exporter.multiprocess import GunicornInternalPrometheusMetrics
