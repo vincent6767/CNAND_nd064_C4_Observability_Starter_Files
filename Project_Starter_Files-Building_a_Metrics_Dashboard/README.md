@@ -2,58 +2,93 @@
 
 ## Verify the monitoring installation
 
-*TODO:* run `kubectl` command to show the running pods and services for all components. Take a screenshot of the output and include it here to verify the installation
+run `kubectl` command to show the running pods and services for all components. Take a screenshot of the output and include it here to verify the installation
 
 * You can access the result images in **answer-img/all-resources-running** folder
 
 ## Setup the Jaeger and Prometheus source
-*TODO:* Expose Grafana to the internet and then setup Prometheus as a data source. Provide a screenshot of the home page after logging into Grafana.
+Expose Grafana to the internet and then setup Prometheus as a data source. Provide a screenshot of the home page after logging into Grafana.
 
 * You can access the Grafana Homepage image in **answer-img/grafana-homepage.png**
 
 ## Create a Basic Dashboard
-*TODO:* Create a dashboard in Grafana that shows Prometheus as a source. Take a screenshot and include it here.
+Create a dashboard in Grafana that shows Prometheus as a source. Take a screenshot and include it here.
 
 * You can access the Grafana Dashboard with Prometheus as a source in **answer-img/grafana-dashboard-with-prometheus-ds**
 
 ## Describe SLO/SLI
-*TODO:* Describe, in your own words, what the SLIs are, based on an SLO of *monthly uptime* and *request response time*.
+Describe, in your own words, what the SLIs are, based on an SLO of *monthly uptime* and *request response time*.
+
+* Service Level Indicators (SLI) are incidators / metrics used to measure the performance of a service. **It's an actual measurement** to show whether the team **achieved the SLO or not**. So for example,
+    
+    * The team set *monthly service uptime to be 99.9%* as a SLO. The SLI is the actual percentage of minutes in a given month.
+    * The team set *service request response time* as 500ms as a SLO. The SLI is the actual response time for each specific requests.
 
 ## Creating SLI metrics.
-*TODO:* It is important to know why we want to measure certain metrics for our customer. Describe in detail 5 metrics to measure these SLIs. 
+It is important to know why we want to measure certain metrics for our customer. Describe in detail 5 metrics to measure these SLIs.
+
+   * There are many metrics that could be used to measure SLIs. But most of them could be categorized into 4 metrics, called golden signals. Those are:
+        * **Latency**: The time taken to serve a request (usually measured in ms).
+        * **Traffic**: The amount of stress on a system from demand (such as the number of HTTP requests/second)
+        * **Saturation**: The overall capacity of a service (such as the percentage of memory or CPU used)
+        * **Errors**: The number of requests that are failing (such as number of HTTP 500 responses).
 
 ## Create a Dashboard to measure our SLIs
 *TODO:* Create a dashboard to measure the uptime of the frontend and backend services We will also want to measure to measure 40x and 50x errors. Create a dashboard that show these values over a 24 hour period and take a screenshot.
 
+* You can see the dashboard in the file: **answer-img/dashboard-to-measure-sli**
+
 ## Tracing our Flask App
-*TODO:*  We will create a Jaeger span to measure the processes on the backend. Once you fill in the span, provide a screenshot of it here.
+We will create a Jaeger span to measure the processes on the backend. Once you fill in the span, provide a screenshot of it here.
+
+* You can see the image in **answer-img/jaeger-traces-grafana.png**
 
 ## Jaeger in Dashboards
-*TODO:* Now that the trace is running, let's add the metric to our current Grafana dashboard. Once this is completed, provide a screenshot of it here.
+Now that the trace is running, let's add the metric to our current Grafana dashboard. Once this is completed, provide a screenshot of it here.
+
+* You can see the image in **answer-img/jaeger-traces-grafana.png**
 
 ## Report Error
-*TODO:* Using the template below, write a trouble ticket for the developers, to explain the errors that you are seeing (400, 500, latency) and to let them know the file that is causing the issue.
+Using the template below, write a trouble ticket for the developers, to explain the errors that you are seeing (400, 500, latency) and to let them know the file that is causing the issue.
 
 TROUBLE TICKET
 
-Name:
+Name: 500 Internal server error on /star endpoint
 
-Date:
+Date: October 24th, 2021
 
-Subject:
+Subject: "Add star" functionality returns 500 internal server error
 
-Affected Area:
+Affected Area: Add star functionality (backend)
 
-Severity:
+Severity: Critical, functionality can't be accessed
 
-Description:
-
+Description: Users are blocked completely to add star features due error. Here is the trace ID for further information including the error log: **595b76dd18bf0b74**
 
 ## Creating SLIs and SLOs
 *TODO:* We want to create an SLO guaranteeing that our application has a 99.95% uptime per month. Name three SLIs that you would use to measure the success of this SLO.
 
+I'm assuming uptime as the amount of time that a service was available to respond to a request. With that definition in mind, here is what I feel 3 SLIs that we need to track.
+
+1. Latency — The time taken to serve a request
+2. Traffic — The amount of stress on a system from demand
+3. Errors — The number of requests that are failing
+
 ## Building KPIs for our plan
 *TODO*: Now that we have our SLIs and SLOs, create KPIs to accurately measure these metrics. We will make a dashboard for this, but first write them down here.
 
+1. Traffic - The number of successful HTTP requests / minute
+
+    * The number of successful (2xx or 4xx) HTTP requests processed / minute shows the service are able to serve requests.
+
+2. Latency - The average time taken to serve requests / minute under 2 minutes
+    * The metric helps to understand how fast the service serve requests. If it's over 5 minutes, then it might indicates issues that potentially could affect the uptime.
+
+3. Errors - The number of 500 errors returned / minute
+
+    * 500 errors shows processed are failed to be processed and impacts the uptime of our service. The metric helps us to spot the 500 error trends so we could act as fast as possible.
+
 ## Final Dashboard
-*TODO*: Create a Dashboard containing graphs that capture all the metrics of your KPIs and adequately representing your SLIs and SLOs. Include a screenshot of the dashboard here, and write a text description of what graphs are represented in the dashboard.  
+*TODO*: Create a Dashboard containing graphs that capture all the metrics of your KPIs and adequately representing your SLIs and SLOs. Include a screenshot of the dashboard here, and write a text description of what graphs are represented in the dashboard.
+
+* You can see the dashboard in the file: **answer-img/final-dashboard.png**

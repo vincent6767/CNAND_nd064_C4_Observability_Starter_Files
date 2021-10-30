@@ -1,4 +1,8 @@
+import logging
+
 from flask import Flask, render_template, request, jsonify
+
+from prometheus_flask_exporter.multiprocess import GunicornInternalPrometheusMetrics
 
 from jaeger_client import Config
 from jaeger_client.metrics.prometheus import PrometheusMetricsFactory
@@ -20,6 +24,8 @@ trace.get_tracer_provider().add_span_processor(
 )
 
 app = Flask(__name__)
+metrics = GunicornInternalPrometheusMetrics(app)
+
 FlaskInstrumentor().instrument_app(app)
 RequestsInstrumentor().instrument()
 
