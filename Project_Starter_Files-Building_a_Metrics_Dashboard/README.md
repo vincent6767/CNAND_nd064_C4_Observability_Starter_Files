@@ -36,6 +36,8 @@ It is important to know why we want to measure certain metrics for our customer.
 ## Create a Dashboard to measure our SLIs
 *TODO:* Create a dashboard to measure the uptime of the frontend and backend services We will also want to measure to measure 40x and 50x errors. Create a dashboard that show these values over a 24 hour period and take a screenshot.
 
+* You can see the dashboard in the file: **answer-img/dashboard-to-measure-sli**
+
 ## Tracing our Flask App
 We will create a Jaeger span to measure the processes on the backend. Once you fill in the span, provide a screenshot of it here.
 
@@ -66,8 +68,27 @@ Description: Users are blocked completely to add star features due error. Here i
 ## Creating SLIs and SLOs
 *TODO:* We want to create an SLO guaranteeing that our application has a 99.95% uptime per month. Name three SLIs that you would use to measure the success of this SLO.
 
+I'm assuming uptime as the amount of time that a service was available to respond to a request. With that definition in mind, here is what I feel 3 SLIs that we need to track.
+
+1. Latency — The time taken to serve a request
+2. Traffic — The amount of stress on a system from demand
+3. Errors — The number of requests that are failing
+
 ## Building KPIs for our plan
 *TODO*: Now that we have our SLIs and SLOs, create KPIs to accurately measure these metrics. We will make a dashboard for this, but first write them down here.
 
+1. Traffic - The number of successful HTTP requests / minute
+
+    * The number of successful (2xx or 4xx) HTTP requests processed / minute shows the service are able to serve requests.
+
+2. Latency - The average time taken to serve requests / minute under 2 minutes
+    * The metric helps to understand how fast the service serve requests. If it's over 5 minutes, then it might indicates issues that potentially could affect the uptime.
+
+3. Errors - The number of 500 errors returned / minute
+
+    * 500 errors shows processed are failed to be processed and impacts the uptime of our service. The metric helps us to spot the 500 error trends so we could act as fast as possible.
+
 ## Final Dashboard
-*TODO*: Create a Dashboard containing graphs that capture all the metrics of your KPIs and adequately representing your SLIs and SLOs. Include a screenshot of the dashboard here, and write a text description of what graphs are represented in the dashboard.  
+*TODO*: Create a Dashboard containing graphs that capture all the metrics of your KPIs and adequately representing your SLIs and SLOs. Include a screenshot of the dashboard here, and write a text description of what graphs are represented in the dashboard.
+
+* You can see the dashboard in the file: **answer-img/final-dashboard.png**
