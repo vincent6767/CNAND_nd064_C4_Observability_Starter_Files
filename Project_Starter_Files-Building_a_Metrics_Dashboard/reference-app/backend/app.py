@@ -29,6 +29,8 @@ trace.get_tracer_provider().add_span_processor(
 app = Flask(__name__)
 metrics = GunicornInternalPrometheusMetrics(app)
 
+metrics.info('app_info', 'App Info', version='1.0.3')
+
 FlaskInstrumentor().instrument_app(app)
 RequestsInstrumentor().instrument()
 
@@ -69,6 +71,10 @@ def my_api():
     with tracer.start_span('my-api') as span:
         answer = "something"
         return jsonify(repsonse=answer)
+
+@app.route('/input-error')
+def input_error():
+    return "Record not found", 400
 
 @app.route('/star', methods=['POST'])
 def add_star():
