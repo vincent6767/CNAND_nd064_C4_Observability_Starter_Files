@@ -90,11 +90,11 @@ I'm assuming uptime as the amount of time that a service was available to respon
 
 1. Latency
 
-    1. The average response time taken to serve requests / minute by each pods
+    1. The average response time / minute by each pods
         
         * The KPI helps to understand how fast the service serve requests.
 
-    1. The average failed request time to serve requests / minute by each pods
+    1. The average failed request time / minute by each pods
 
         * The KPI helps to identify which requests are considered as slow error and fast error. Slow error is important to be tracked as slow error impacts the systems more than fast error.
 
@@ -121,4 +121,4 @@ I'm assuming uptime as the amount of time that a service was available to respon
 ## Final Dashboard
 *TODO*: Create a Dashboard containing graphs that capture all the metrics of your KPIs and adequately representing your SLIs and SLOs. Include a screenshot of the dashboard here, and write a text description of what graphs are represented in the dashboard.
 
-* You can see the dashboard in the file: **answer-img/final-dashboard.png**
+* You can see the dashboard in the folder: **answer-img/final-dashboard**
