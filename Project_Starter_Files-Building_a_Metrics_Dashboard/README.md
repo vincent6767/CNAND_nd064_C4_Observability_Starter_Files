@@ -73,20 +73,50 @@ I'm assuming uptime as the amount of time that a service was available to respon
 1. Latency — The time taken to serve a request
 2. Traffic — The amount of stress on a system from demand
 3. Errors — The number of requests that are failing
+4. Saturation: The overall capacity of a service
 
 ## Building KPIs for our plan
 *TODO*: Now that we have our SLIs and SLOs, create KPIs to accurately measure these metrics. We will make a dashboard for this, but first write them down here.
 
-1. Traffic - The number of successful HTTP requests / minute
+1. Traffic
+    
+    1. Total successful HTTP requests / minute
+        
+        * The number of successful (2xx or 4xx) HTTP requests processed / minute shows the service are able to serve requests.
+    
+    1. Total requests / minute
 
-    * The number of successful (2xx or 4xx) HTTP requests processed / minute shows the service are able to serve requests.
+        * The number of all requests coming in and grouped by the HTTP status. This will help see how many total requests are successfully processed and failed.
 
-2. Latency - The average time taken to serve requests / minute under 2 minutes
-    * The metric helps to understand how fast the service serve requests. If it's over 5 minutes, then it might indicates issues that potentially could affect the uptime.
+1. Latency
 
-3. Errors - The number of 500 errors returned / minute
+    1. The average response time taken to serve requests / minute by each pods
+        
+        * The KPI helps to understand how fast the service serve requests.
 
-    * 500 errors shows processed are failed to be processed and impacts the uptime of our service. The metric helps us to spot the 500 error trends so we could act as fast as possible.
+    1. The average failed request time to serve requests / minute by each pods
+
+        * The KPI helps to identify which requests are considered as slow error and fast error. Slow error is important to be tracked as slow error impacts the systems more than fast error.
+
+1. Errors
+
+    1. The number of 500 errors returned / minute for each service
+
+        * 500 errors shows processed are failed to be processed and impacts the uptime of our service. The metric helps us to spot the 500 error trends so we could act as fast as possible.
+    
+    1. Response time under 5 seconds by each pods
+
+        * The KPI helps to understand which services takes longer than 5 seconds process. Service which takes more than 5 seconds processing time need to be investigated as it could impact player experiences and also request queue processing time.
+
+1.  Saturation
+
+    1. CPU Usage for each pod
+        
+        * The KPI helps understands how's the pos uses the CPU to serve requests. Constant high CPU usage needs investigation.
+
+    2. Memory Usage for each services
+
+        * The KPI helps understands how's the post uses the memory to serve requests. Constant high memory usage needs investigation.
 
 ## Final Dashboard
 *TODO*: Create a Dashboard containing graphs that capture all the metrics of your KPIs and adequately representing your SLIs and SLOs. Include a screenshot of the dashboard here, and write a text description of what graphs are represented in the dashboard.
